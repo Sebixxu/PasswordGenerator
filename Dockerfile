@@ -1,11 +1,9 @@
-FROM microsoft/dotnet:3.0-sdk
-WORKDIR /sample-app/
+FROM microsoft/dotnet:2.0-sdk
+WORKDIR /dodatkowe-zadanie/
 
-# kopiujemy plik .csproj oraz u¿ywamy polecenia dotnet restore
-COPY *.csproj ./
+COPY /PasswordGenerator/*.csproj ./
 RUN dotnet restore
 
-# kopiujemy i dokonujemy build'a ca³ej reszty
-COPY . ./sample-app
+COPY . ./dodatkowe-zadanie
 RUN dotnet build -c Release
 ENTRYPOINT ["dotnet", "run", "-c", "Release", "--no-build"]
